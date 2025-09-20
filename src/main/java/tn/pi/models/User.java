@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Setter @Getter
 @NoArgsConstructor
@@ -19,4 +20,6 @@ public class User {
     private Integer id;
     private String name;
     private LocalDate birthdate;
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
 }
