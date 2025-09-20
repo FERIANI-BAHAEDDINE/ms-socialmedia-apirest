@@ -37,7 +37,13 @@ public class UserController {
 
     @PostMapping("/users")
     public User createUser(@RequestBody User user) {
-        return repository.save(user);
+        try {
+            return repository.save(user);
+        }
+        catch (Exception e) {
+            log.info("User not created"+ e.getMessage());
+            return null;
+        }
     }
 
 }
