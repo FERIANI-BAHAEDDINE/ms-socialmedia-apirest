@@ -45,5 +45,16 @@ public class UserController {
             return null;
         }
     }
+    @DeleteMapping("/users/{id_user}")
+    public String DeleteUser(@PathVariable Integer id_user) {
+        try {
+            repository.deleteById(id_user);
+            return "ok";
+        }
+        catch (Exception e) {
+            log.info("User not deleted"+ e.getMessage());
+            return null;
+        }
+    }
 
 }
